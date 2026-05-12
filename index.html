@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaushalya Karnataka</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f3f4f6;
+}
+
+/* SPLASH SCREEN */
+
+.splash-screen{
+height:100vh;
+background:linear-gradient(135deg,#1e3a8a,#7c3aed);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.splash-content{
+color:white;
+}
+
+.splash-content h1{
+font-size:50px;
+margin-bottom:15px;
+}
+
+.splash-content p{
+font-size:20px;
+margin-bottom:20px;
+}
+
+.splash-content h3{
+margin-bottom:30px;
+color:#facc15;
+}
+
+.splash-content button{
+padding:15px 40px;
+font-size:18px;
+border:none;
+border-radius:50px;
+background:white;
+color:#2563eb;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* LOGIN PAGE */
+
+.auth-page{
+height:100vh;
+display:none;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+padding:20px;
+}
+
+.auth-box{
+background:white;
+padding:30px;
+width:350px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.auth-box h1{
+text-align:center;
+margin-bottom:20px;
+color:#2563eb;
+}
+
+.auth-box input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+background:#f1f5f9;
+font-size:16px;
+}
+
+.auth-box button{
+width:100%;
+padding:14px;
+border:none;
+background:#2563eb;
+color:white;
+font-size:16px;
+border-radius:10px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.switch-btn{
+background:none!important;
+color:#2563eb!important;
+}
+
+/* MAIN APP */
+
+.main-app{
+display:none;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+padding:18px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+/* MENU */
+
+.menu{
+position:relative;
+}
+
+.menu-btn{
+background:white;
+color:#2563eb;
+border:none;
+padding:12px 18px;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.dropdown{
+display:none;
+position:absolute;
+right:0;
+top:55px;
+background:white;
+width:220px;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+z-index:100;
+}
+
+.dropdown a{
+display:block;
+padding:14px 18px;
+text-decoration:none;
+color:#111827;
+font-size:16px;
+border-bottom:1px solid #eee;
+}
+
+.dropdown a:hover{
+background:#f3f4f6;
+}
+
+/* SEARCH */
+
+.search-box{
+padding:20px;
+display:flex;
+justify-content:center;
+background:white;
+}
+
+.search-box input{
+width:90%;
+max-width:500px;
+padding:15px;
+border:none;
+border-radius:50px;
+background:#f1f5f9;
+font-size:16px;
+}
+
+/* ADD SERVICE */
+
+#serviceBox{
+display:none;
+padding:20px;
+}
+
+.service-form{
+background:white;
+padding:20px;
+border-radius:20px;
+max-width:500px;
+margin:auto;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.service-form h2{
+margin-bottom:15px;
+}
+
+.service-form input{
+width:100%;
+padding:14px;
+margin-bottom:10px;
+border:none;
+border-radius:10px;
+background:#f1f5f9;
+}
+
+.service-form button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+/* WORKERS */
+
+.worker-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-content h2{
+margin-bottom:10px;
+}
+
+.service{
+color:#2563eb;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.price{
+color:#16a34a;
+font-size:18px;
+margin-bottom:8px;
+}
+
+.rating{
+margin-bottom:15px;
+color:#f59e0b;
+font-size:18px;
+}
+
+.btn-group{
+display:flex;
+gap:10px;
+}
+
+.hire-btn{
+flex:1;
+padding:12px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}
+
+.call-btn{
+flex:1;
+padding:12px;
+border:none;
+background:#16a34a;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}
+
+footer{
+background:#111827;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.logo{
+font-size:22px;
+}
+
+.splash-content h1{
+font-size:38px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SPLASH -->
+
+<div class="splash-screen" id="splashScreen">
+
+<div class="splash-content">
+
+<h1>Kaushalya Karnataka</h1>
+
+<p>Trusted Local Skill Hiring Platform</p>
+
+<h3>Admin : Irfan</h3>
+
+<button onclick="openAuth()">
+Get Started
+</button>
+
+</div>
+
+</div>
+
+<!-- LOGIN -->
+
+<div class="auth-page" id="authPage">
+
+<div class="auth-box">
+
+<div id="loginBox">
+
+<h1>Login</h1>
+
+<input type="email"
+id="loginEmail"
+placeholder="Enter Email">
+
+<input type="password"
+id="loginPassword"
+placeholder="Enter Password">
+
+<button onclick="loginUser()">
+Login
+</button>
+
+<button class="switch-btn"
+onclick="showRegister()">
+
+Create New Account
+
+</button>
+
+</div>
+
+<div id="registerBox"
+style="display:none;">
+
+<h1>Register</h1>
+
+<input type="text"
+id="registerName"
+placeholder="Enter Name">
+
+<input type="email"
+id="registerEmail"
+placeholder="Enter Email">
+
+<input type="password"
+id="registerPassword"
+placeholder="Enter Password">
+
+<button onclick="registerUser()">
+Register
+</button>
+
+<button class="switch-btn"
+onclick="showLogin()">
+
+Already Have Account?
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MAIN APP -->
+
+<div class="main-app" id="mainApp">
+
+<header>
+
+<div class="logo">
+Kaushalya Karnataka
+</div>
+
+<div class="menu">
+
+<button class="menu-btn"
+onclick="toggleMenu()">
+
+☰ Menu
+
+</button>
+
+<div class="dropdown"
+id="dropdownMenu">
+
+<a href="#"
+onclick="showAccount()">
+
+👤 My Account
+
+</a>
+
+<a href="#"
+onclick="showRating()">
+
+⭐ Rating
+
+</a>
+
+<a href="#"
+onclick="showSupport()">
+
+📞 Customer Support
+
+</a>
+
+<a href="#"
+onclick="showAddService()">
+
+🛠 Add Service
+
+</a>
+
+<a href="#"
+onclick="logout()">
+
+🚪 Logout
+
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input type="text"
+id="search"
+placeholder="Search workers...">
+
+</div>
+
+<!-- ADD SERVICE -->
+
+<div id="serviceBox">
+
+<div class="service-form">
+
+<h2>Add Your Service</h2>
+
+<input type="text"
+id="serviceName"
+placeholder="Service Name">
+
+<input type="text"
+id="servicePrice"
+placeholder="Price">
+
+<input type="text"
+id="serviceImage"
+placeholder="Image URL">
+
+<button onclick="addService()">
+
+Add Service
+
+</button>
+
+</div>
+
+</div>
+
+<!-- WORKERS -->
+
+<div class="worker-container"
+id="workerList">
+
+</div>
+
+<footer>
+
+<p>
+© 2026 Kaushalya Karnataka App
+</p>
+
+</footer>
+
+</div>
+
+<script>
+
+/* SPLASH */
+
+function openAuth(){
+
+document.getElementById("splashScreen")
+.style.display="none";
+
+document.getElementById("authPage")
+.style.display="flex";
+
+}
+
+/* REGISTER */
+
+function registerUser(){
+
+const name=
+document.getElementById("registerName").value;
+
+const email=
+document.getElementById("registerEmail").value;
+
+const password=
+document.getElementById("registerPassword").value;
+
+if(name===""||email===""||password===""){
+
+alert("Fill all fields");
+return;
+
+}
+
+const user={
+name:name,
+email:email,
+password:password
+};
+
+localStorage.setItem(email,
+JSON.stringify(user));
+
+alert("Registration Successful");
+
+showLogin();
+
+}
+
+/* LOGIN */
+
+function loginUser(){
+
+const email=
+document.getElementById("loginEmail").value;
+
+const password=
+document.getElementById("loginPassword").value;
+
+const userData=
+localStorage.getItem(email);
+
+if(userData==null){
+
+alert("User not found");
+return;
+
+}
+
+const user=JSON.parse(userData);
+
+if(user.password===password){
+
+localStorage.setItem(
+"kaushalyaUser",
+user.name
+);
+
+document.getElementById("authPage")
+.style.display="none";
+
+document.getElementById("mainApp")
+.style.display="block";
+
+displayWorkers(workers);
+
+}else{
+
+alert("Wrong Password");
+
+}
+
+}
+
+/* SWITCH */
+
+function showRegister(){
+
+document.getElementById("loginBox")
+.style.display="none";
+
+document.getElementById("registerBox")
+.style.display="block";
+
+}
+
+function showLogin(){
+
+document.getElementById("registerBox")
+.style.display="none";
+
+document.getElementById("loginBox")
+.style.display="block";
+
+}
+
+/* MENU */
+
+function toggleMenu(){
+
+const menu=
+document.getElementById("dropdownMenu");
+
+if(menu.style.display==="block"){
+
+menu.style.display="none";
+
+}else{
+
+menu.style.display="block";
+
+}
+
+}
+
+/* ACCOUNT */
+
+function showAccount(){
+
+const user=
+localStorage.getItem("kaushalyaUser");
+
+alert("Logged in as : " + user);
+
+}
+
+/* RATING */
+
+function showRating(){
+
+alert("Kaushalya Karnataka Rating ⭐ 4.8 / 5");
+
+}
+
+/* SUPPORT */
+
+function showSupport(){
+
+alert("Customer Support : 8431232613");
+
+}
+
+/* ADD SERVICE BOX */
+
+function showAddService(){
+
+const box=
+document.getElementById("serviceBox");
+
+if(box.style.display==="block"){
+
+box.style.display="none";
+
+}else{
+
+box.style.display="block";
+
+}
+
+}
+
+/* LOGOUT */
+
+function logout(){
+
+localStorage.removeItem("kaushalyaUser");
+
+location.reload();
+
+}
+
+/* WORKERS */
+
+let workers=[
+
+{
+name:"Ramesh",
+service:"Electrician",
+price:"₹300",
+rating:"4.8 ⭐",
+phone:"9876543210",
+image:"https://images.unsplash.com/photo-1581092160607-ee22621dd758"
+},
+
+{
+name:"Suresh",
+service:"Plumber",
+price:"₹250",
+rating:"4.6 ⭐",
+phone:"9876543211",
+image:"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a"
+},
+
+{
+name:"Akash",
+service:"Carpenter",
+price:"₹500",
+rating:"4.9 ⭐",
+phone:"9876543212",
+image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd"
+},
+
+{
+name:"Rahul",
+service:"Painter",
+price:"₹700",
+rating:"4.5 ⭐",
+phone:"9876543213",
+image:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+},
+
+{
+name:"Imran",
+service:"AC Technician",
+price:"₹600",
+rating:"4.8 ⭐",
+phone:"9876543214",
+image:"https://images.unsplash.com/photo-1581578731548-c64695cc6952"
+},
+
+{
+name:"Kiran",
+service:"Welder",
+price:"₹450",
+rating:"4.4 ⭐",
+phone:"9876543215",
+image:"https://images.unsplash.com/photo-1517048676732-d65bc937f952"
+},
+
+{
+name:"Manoj",
+service:"Bike Mechanic",
+price:"₹400",
+rating:"4.7 ⭐",
+phone:"9876543216",
+image:"https://images.unsplash.com/photo-1486006920555-c77dcf18193c"
+},
+
+{
+name:"Shahid",
+service:"Mobile Repair",
+price:"₹350",
+rating:"4.5 ⭐",
+phone:"9876543217",
+image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+},
+
+{
+name:"Vinay",
+service:"Driver",
+price:"₹800",
+rating:"4.9 ⭐",
+phone:"9876543218",
+image:"https://images.unsplash.com/photo-1503376780353-7e6692767b70"
+},
+
+{
+name:"Arjun",
+service:"Gardener",
+price:"₹300",
+rating:"4.3 ⭐",
+phone:"9876543219",
+image:"https://images.unsplash.com/photo-1416879595882-3373a0480b5b"
+}
+
+];
+
+/* DISPLAY */
+
+const workerList=
+document.getElementById("workerList");
+
+function displayWorkers(data){
+
+workerList.innerHTML="";
+
+data.forEach(worker=>{
+
+workerList.innerHTML+=`
+
+<div class="card">
+
+<img src="${worker.image}">
+
+<div class="card-content">
+
+<h2>${worker.name}</h2>
+
+<div class="service">
+${worker.service}
+</div>
+
+<div class="price">
+${worker.price}
+</div>
+
+<div class="rating">
+${worker.rating}
+</div>
+
+<div class="btn-group">
+
+<button class="hire-btn"
+onclick="hireWorker('${worker.name}')">
+
+Hire
+
+</button>
+
+<button class="call-btn"
+onclick="callWorker('${worker.phone}')">
+
+Call
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* SEARCH */
+
+const search=
+document.getElementById("search");
+
+search.addEventListener("keyup",()=>{
+
+const value=
+search.value.toLowerCase();
+
+const filtered=
+workers.filter(worker=>
+
+worker.service.toLowerCase()
+.includes(value)
+
+||
+
+worker.name.toLowerCase()
+.includes(value)
+
+);
+
+displayWorkers(filtered);
+
+});
+
+/* HIRE */
+
+function hireWorker(name){
+
+alert("You hired "+name);
+
+}
+
+/* CALL */
+
+function callWorker(phone){
+
+window.location.href=`tel:${phone}`;
+
+}
+
+/* ADD SERVICE */
+
+function addService(){
+
+const serviceName=
+document.getElementById("serviceName").value;
+
+const servicePrice=
+document.getElementById("servicePrice").value;
+
+const serviceImage=
+document.getElementById("serviceImage").value;
+
+const user=
+localStorage.getItem("kaushalyaUser");
+
+if(serviceName==="" ||
+servicePrice==="" ||
+serviceImage===""){
+
+alert("Fill all fields");
+return;
+
+}
+
+workers.push({
+
+name:user,
+service:serviceName,
+price:servicePrice,
+rating:"New ⭐",
+phone:"8431232613",
+image:serviceImage
+
+});
+
+displayWorkers(workers);
+
+alert("Service Added Successfully");
+
+document.getElementById("serviceName").value="";
+document.getElementById("servicePrice").value="";
+document.getElementById("serviceImage").value="";
+
+}
+
+</script>
+
+</body>
+</html>
